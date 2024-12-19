@@ -1,0 +1,9 @@
+logs
+*.log
+coverage
+node_modules/
+.npm
+.env
+.env*.local
+dist
+.cache/
