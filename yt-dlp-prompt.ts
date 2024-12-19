@@ -214,13 +214,10 @@ program
       await verifyMkvpropedit();
       const mkvPropArgs = [`'${outFilePath}.mkv'`, `--edit info`];
       const mkvPropEditTitle = [...mkvPropArgs, `--set title='${tagTitle}'`];
-      const mkvPropEditDate = [...mkvPropArgs, `--set date='${year}-${month}-${day}'`];
       const mkvpropeditTitleCmd = `mkvpropedit ${mkvPropEditTitle.join(' ')}`;
-      const mkvpropeditDateCmd = `mkvpropedit ${mkvPropEditDate.join(' ')}`;
-      console.log(mkvpropeditTitleCmd, mkvpropeditDateCmd);
+      console.log(mkvpropeditTitleCmd);
       try {
         await shell_exec(mkvpropeditTitleCmd, { logStdout: true, logStderr: true, cwd });
-        await shell_exec(mkvpropeditDateCmd, { logStdout: true, logStderr: true, cwd });
       } catch (error) {
         console.error('Failed to tag the video.', error);
         process.exit(1);
